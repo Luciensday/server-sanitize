@@ -26,8 +26,8 @@ function postItem(post) {
   const prettyDate = date.toLocaleString("en-GB");
   return `
     <li>
-      <p>${post.message}</p>
-      <p>—${post.nickname} | ${prettyDate}</p>
+      <p>${sanitize(post.message)}</p>
+      <p>—${sanitize(post.nickname)} | ${prettyDate}</p>
     </li>
   `;
 }
@@ -45,6 +45,10 @@ function layout(title, content) {
       </body>
     </html>
   `;
+}
+
+function sanitize(unsafe) {
+  return unsafe.replace("<", "&lt;");
 }
 
 module.exports = { home };
