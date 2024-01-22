@@ -8,7 +8,7 @@
     "test:validate": "node test/validation.test.js"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "eslint": "^8.23.0",
@@ -24,5 +24,15 @@
       "es2021": true,
       "node": true
     }
-  }
+  },
+  "name": "server-sanitize",
+  "description": "Web applications commonly receive user input and display it on the page. For example a website like Twitter lets people submit messages that are then displayed to other people. It's very important to make sure you are receiving the right information, and that it does not contain any malicious code.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
