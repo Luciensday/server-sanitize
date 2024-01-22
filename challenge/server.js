@@ -16,11 +16,11 @@ server.post("/", express.urlencoded({ extended: false }), (req, res) => {
   const errorsObject = {};
 
   if (!nickname) {
-    errorsObject.nickname = `your name please??`;
+    errorsObject.nickname = "please enter your nickname";
   }
 
   if (!message) {
-    errorsObject.message = `say something! can't be blank here`;
+    errorsObject.message = "please enter a message";
   }
 
   if (Object.keys(errorsObject).length > 0) {

@@ -1,15 +1,22 @@
-function home(posts) {
+function home(posts, errorObject = {}, requestBody = {}) {
   const title = "All posts";
   const content = /*html*/ `
     <h2>New post</h2>
     <form method="POST">
       <p>
         <label for="nickname">Nickname</label>
-        <input id="nickname" name="nickname">
+        <input id="nickname" name="nickname" value="${
+          requestBody.nickname ? sanitize(requestBody.nickname) : ""
+        }" >
+        ${validation(errorObject.nickname)}
       </p>
       <p>
         <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
+        <textarea id="message" name="message">
+
+        
+        </textarea>
+        ${validation(errorObject.message)}
       </p>
       <button>Send</button>
     </form>
@@ -48,7 +55,16 @@ function layout(title, content) {
 }
 
 function sanitize(unsafe) {
-  return unsafe.replace("<", "&lt;");
+  return unsafe.replace(/</g, "&lt;");
+}
+
+function validation(message) {
+  if (message) {
+    return `
+  <span>${message}</span>`;
+  } else {
+    return "";
+  }
 }
 
 module.exports = { home };
